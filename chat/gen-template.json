@@ -1,0 +1,224 @@
+{
+  "actionDetails" : {
+    "id" : "pseudoaction.chat.message.dita.agent",
+    "categoryId" : "Chat modes",
+    "type" : "pseudo",
+    "title" : "DITA Agent",
+    "short-description" : "DITA Agent",
+    "description" : "Chat with the AI about your DITA XML project, set goals, or give instructions. The AI explores your project to complete even complex tasks efficiently, proposes a plan, and can make project-wide changes on your behalf—but you decide what to keep.",
+    "expand-params" : [ {
+      "name" : "currentProjectURL",
+      "value" : "${pdu}",
+      "prefix" : "\nThe current project root directory URL: "
+    }, {
+      "name" : "currentMapURL",
+      "value" : "${currentMapURL}",
+      "prefix" : "\nThe current DITA Map URL: "
+    }, {
+      "name" : "currentEditorURL",
+      "value" : "${currentFileURL}",
+      "prefix" : "\nThe currently edited document URL: "
+    }, {
+      "name" : "documentType",
+      "value" : "${contentTypeDescription}",
+      "prefix" : "\nThe type of the current edited document: "
+    }, {
+      "name" : "contextPrompt",
+      "value" : "${contextPrompt}"
+    } ],
+    "parameters" : {
+      "temperature" : 0.0,
+      "max_tokens" : 0,
+      "function_refs" : [ {
+        "ref" : "get_current_document_location"
+      }, {
+        "ref" : "get_document_content"
+      }, {
+        "ref" : "get_text_around_caret"
+      }, {
+        "ref" : "search_project_resources"
+      }, {
+        "ref" : "grep_project"
+      }, {
+        "ref" : "list_dir"
+      }, {
+        "ref" : "get_ditamap_structure"
+      }, {
+        "ref" : "save_document"
+      }, {
+        "ref" : "edit_document"
+      }, {
+        "ref" : "add_dita_reference_to_ditamap"
+      }, {
+        "ref" : "invoke_ai_action"
+      }, {
+        "ref" : "retrieve_ai_actions"
+      }, {
+        "ref" : "get_xml_refactoring_operations"
+      }, {
+        "ref" : "get_xml_refactoring_operation_params"
+      }, {
+        "ref" : "refactor_xml_with_operation"
+      }, {
+        "ref" : "refactor_xml_with_xslt"
+      }, {
+        "ref" : "store_to_memory"
+      }, {
+        "ref" : "resolve_dita_reference"
+      }, {
+        "ref" : "find_reusable_components"
+      }, {
+        "ref" : "get_dita_keyrefs"
+      }, {
+        "ref" : "validate_content"
+      }, {
+        "ref" : "validate_current_document"
+      }, {
+        "ref" : "term_check_document_content"
+      }, {
+        "ref" : "term_check_current_document"
+      } ]
+    },
+    "quick-assist" : false,
+    "embed-assist" : false,
+    "isBuiltinAction" : true
+  },
+  "actionParameters" : {
+    "currentMapURL" : "\nThe current DITA Map URL: file:/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/mobilePhone.ditamap",
+    "currentEditorURL" : "\nThe currently edited document URL: file:/D:/tools/Oxygen%20XML%20Editor%2028/frameworks/dita/templates/topic/Machinery%20Task.properties",
+    "documentType" : "\nThe type of the current edited document: text/properties",
+    "currentProjectURL" : "\nThe current project root directory URL: file:/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/",
+    "contextPrompt" : "# Mobile phone project context\n\n\n#Templates\nThe templates are located in `templates` directory of the project directory.\n\nThe name that you use to save the template will be the name that appears in the new document wizard, including capitalization, space, and characters (for example, My Custom Template1.xml will appear in the new file wizard as My Custom Template1)."
+  },
+  "name" : "Analyze the topics and extract a common template...",
+  "description" : "Analyze the topics and extract a common template to use for future files Attach D:\\Git-workspace\\presentations\\2025\\tcworld-ai\\positron-ai-vibe-writing\\mobile-phone\\tasks\\turnBluetoothOnOff.dita Attach D:\\Git-workspace\\presentations\\2025\\tcworld-ai\\positron-ai-vibe-writing\\mobile-phone\\tasks\\sendFileBluetooth.dita Attach D:\\Git-workspace\\presentations\\2025\\tcworld-ai\\positron-ai-vibe-writing\\mobile-phone\\tasks\\receiveFilesBluetooth.dita",
+  "initialMessages" : [ ],
+  "tree" : {
+    "conversationId" : 1762710074193,
+    "root" : {
+      "type" : "MessageNode",
+      "contentNodes" : [ {
+        "type" : "MessageNode",
+        "message" : {
+          "role" : "user",
+          "content" : "Analyze the topics and extract a common template to use for future files#################attachments#################${attach(file:/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/tasks/turnBluetoothOnOff.dita)}${attach(file:/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/tasks/sendFileBluetooth.dita)}${attach(file:/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/tasks/receiveFilesBluetooth.dita)}"
+        },
+        "contentNodes" : [ {
+          "type" : "MessageNode",
+          "message" : {
+            "role" : "assistant",
+            "content" : "After analyzing the three provided DITA task topics, here is a summary of their common structure and a recommended template for future task files:\n\n## Common Structure Observed\n\nAll three topics share the following elements and structure:\n\n1. **XML Declaration and DOCTYPE**\n   - Each file starts with the XML declaration and a DITA Task DOCTYPE.\n\n2. **<task> Root Element**\n   - Each topic uses the <task> root element with a unique id attribute.\n\n3. **<title>**\n   - A clear, action-oriented title describing the task.\n\n4. **<shortdesc>**\n   - A concise summary of the task, often including context or a key benefit.\n\n5. **<prolog>**\n   - Contains:\n     - <author>\n     - <critdates> with <created> and <revised>\n     - <metadata> with <data> elements for questions (oxy:question)\n     - <data> elements for review status and period\n\n6. **<taskbody>**\n   - May include:\n     - <context> (optional): Provides prerequisites or important context.\n     - <steps>: Ordered list of <step> elements, each with a <cmd> describing an action.\n\n7. **Other Elements**\n   - Use of <term> for UI terms or key concepts.\n   - Occasional use of <xref> for cross-references.\n\n---\n\n## Recommended DITA Task Template\n\nBelow is a generic template you can use for future DITA task topics, based on the common structure:\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE task PUBLIC \"-//OASIS//DTD DITA Task//EN\" \"task.dtd\">\n<task id=\"task_unique_id\">\n    <title>Task Title</title>\n    <shortdesc>Brief summary of what this task accomplishes or why it is important.</shortdesc>\n    <prolog>\n        <author>your.name@domain.com</author>\n        <critdates>\n            <created date=\"YYYY-MM-DD\"/>\n            <revised modified=\"YYYY-MM-DD\"/>\n        </critdates>\n        <metadata>\n            <data name=\"oxy:question\">What user question does this task answer?</data>\n            <!-- Add more <data name=\"oxy:question\"> as needed -->\n        </metadata>\n        <data name=\"wk-review-status\" value=\"draft\"/>\n        <data name=\"wk-review-period\" value=\"when-necessary\"/>\n    </prolog>\n    <taskbody>\n        <!-- Optional context section -->\n        <context>\n            <p>Prerequisites or important information before starting the task.</p>\n        </context>\n        <steps>\n            <step>\n                <cmd>First action the user must take.</cmd>\n            </step>\n            <step>\n                <cmd>Second action the user must take.</cmd>\n            </step>\n            <!-- Add more steps as needed -->\n        </steps>\n        <!-- Optionally, add <result> or <postreq> sections if needed -->\n    </taskbody>\n</task>\n```\n\n---\n\n## Key Points for Consistency\n\n- Always use <term> for UI elements or key terms.\n- Use <context> for prerequisites or important notes.\n- Use <steps> for the main procedure, with each <step> containing a <cmd>.\n- Keep <shortdesc> concise and informative.\n- Maintain metadata for author, dates, and review status.\n- Use <xref> for cross-references to related tasks when needed.\n\nWould you like this template saved as a reusable file in your templates directory? If so, please specify the filename or accept a suggested one (e.g., TaskTemplate.xml)."
+          },
+          "contentNodes" : [ {
+            "type" : "MessageNode",
+            "message" : {
+              "role" : "user",
+              "content" : "save them, choose a well suited name"
+            },
+            "contentNodes" : [ {
+              "type" : "tools",
+              "message" : {
+                "role" : "assistant",
+                "content" : [ ],
+                "tool_calls" : [ {
+                  "index" : 0,
+                  "id" : "call_Cog03Ky6ooz8U17xS5zue8ok",
+                  "type" : "function",
+                  "function" : {
+                    "name" : "list_dir",
+                    "arguments" : "{\"explanation\":\"Check the templates directory to confirm its existence and see naming conventions for template files.\",\"folder_path\":\"D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/templates\"}"
+                  }
+                } ]
+              },
+              "contentNodes" : [ {
+                "type" : "tools",
+                "message" : {
+                  "role" : "assistant",
+                  "content" : [ ],
+                  "tool_calls" : [ {
+                    "index" : 0,
+                    "id" : "call_qMXyXpDhDpH9LqHssaMno2fy",
+                    "type" : "function",
+                    "function" : {
+                      "name" : "save_document",
+                      "arguments" : "{\"content\":\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<!DOCTYPE task PUBLIC \\\"-//OASIS//DTD DITA Task//EN\\\" \\\"task.dtd\\\">\\n<task id=\\\"task_template\\\">\\n    <title>Task Title</title>\\n    <shortdesc>Brief summary of what this task accomplishes or why it is important.</shortdesc>\\n    <prolog>\\n        <author>your.name@domain.com</author>\\n        <critdates>\\n            <created date=\\\"YYYY-MM-DD\\\"/>\\n            <revised modified=\\\"YYYY-MM-DD\\\"/>\\n        </critdates>\\n        <metadata>\\n            <data name=\\\"oxy:question\\\">What user question does this task answer?</data>\\n            <!-- Add more <data name=\\\"oxy:question\\\"> as needed -->\\n        </metadata>\\n        <data name=\\\"wk-review-status\\\" value=\\\"draft\\\"/>\\n        <data name=\\\"wk-review-period\\\" value=\\\"when-necessary\\\"/>\\n    </prolog>\\n    <taskbody>\\n        <!-- Optional context section -->\\n        <context>\\n            <p>Prerequisites or important information before starting the task.</p>\\n        </context>\\n        <steps>\\n            <step>\\n                <cmd>First action the user must take.</cmd>\\n            </step>\\n            <step>\\n                <cmd>Second action the user must take.</cmd>\\n            </step>\\n            <!-- Add more steps as needed -->\\n        </steps>\\n        <!-- Optionally, add <result> or <postreq> sections if needed -->\\n    </taskbody>\\n</task>\\n\",\"url\":\"D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/templates/TaskTemplate.xml\",\"validate\":\"true\"}"
+                    }
+                  } ]
+                },
+                "contentNodes" : [ {
+                  "type" : "MessageNode",
+                  "message" : {
+                    "role" : "assistant",
+                    "content" : "The extracted DITA task template has been saved as TaskTemplate.xml in your templates directory. You can now use this file as a starting point for future DITA task topics to ensure consistency and best practices. The filename is clear and descriptive, making it easy to identify as a reusable template for task topics."
+                  },
+                  "contentNodes" : [ {
+                    "type" : "MessageNode",
+                    "message" : {
+                      "role" : "user",
+                      "content" : "the result is required"
+                    },
+                    "contentNodes" : [ {
+                      "type" : "tools",
+                      "message" : {
+                        "role" : "assistant",
+                        "content" : [ ],
+                        "tool_calls" : [ {
+                          "index" : 0,
+                          "id" : "call_AaYyLHBFo38Byu6OjPalLGa5",
+                          "type" : "function",
+                          "function" : {
+                            "name" : "save_document",
+                            "arguments" : "{\"content\":\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<!DOCTYPE task PUBLIC \\\"-//OASIS//DTD DITA Task//EN\\\" \\\"task.dtd\\\">\\n<task id=\\\"task_template\\\">\\n    <title>Task Title</title>\\n    <shortdesc>Brief summary of what this task accomplishes or why it is important.</shortdesc>\\n    <prolog>\\n        <author>your.name@domain.com</author>\\n        <critdates>\\n            <created date=\\\"YYYY-MM-DD\\\"/>\\n            <revised modified=\\\"YYYY-MM-DD\\\"/>\\n        </critdates>\\n        <metadata>\\n            <data name=\\\"oxy:question\\\">What user question does this task answer?</data>\\n            <!-- Add more <data name=\\\"oxy:question\\\"> as needed -->\\n        </metadata>\\n        <data name=\\\"wk-review-status\\\" value=\\\"draft\\\"/>\\n        <data name=\\\"wk-review-period\\\" value=\\\"when-necessary\\\"/>\\n    </prolog>\\n    <taskbody>\\n        <!-- Optional context section -->\\n        <context>\\n            <p>Prerequisites or important information before starting the task.</p>\\n        </context>\\n        <steps>\\n            <step>\\n                <cmd>First action the user must take.</cmd>\\n            </step>\\n            <step>\\n                <cmd>Second action the user must take.</cmd>\\n            </step>\\n            <!-- Add more steps as needed -->\\n        </steps>\\n        <result>\\n            <p>Describe the expected outcome or result after completing the steps.</p>\\n        </result>\\n        <!-- Optionally, add <postreq> sections if needed -->\\n    </taskbody>\\n</task>\\n\",\"url\":\"D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/templates/TaskTemplate.xml\",\"validate\":\"true\"}"
+                          }
+                        } ]
+                      },
+                      "contentNodes" : [ {
+                        "type" : "MessageNode",
+                        "message" : {
+                          "role" : "assistant",
+                          "content" : "The template has been updated to include a <result> section, which describes the expected outcome after completing the steps. The revised template is saved as TaskTemplate.xml in your templates directory and is ready for use in future DITA task topics."
+                        },
+                        "contentNodes" : [ ],
+                        "engine" : "gpt-4.1-2025-04-14"
+                      } ],
+                      "engine" : "gpt-4.1-2025-04-14",
+                      "tool_calls_info" : [ {
+                        "tool_message" : {
+                          "role" : "tool",
+                          "content" : "Content successfully saved",
+                          "tool_call_id" : "call_AaYyLHBFo38Byu6OjPalLGa5"
+                        },
+                        "tool_call_description" : "Write document (/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/templates/TaskTemplate.xml)"
+                      } ]
+                    } ]
+                  } ],
+                  "engine" : "gpt-4.1-2025-04-14"
+                } ],
+                "engine" : "gpt-4.1-2025-04-14",
+                "tool_calls_info" : [ {
+                  "tool_message" : {
+                    "role" : "tool",
+                    "content" : "Content successfully saved",
+                    "tool_call_id" : "call_qMXyXpDhDpH9LqHssaMno2fy"
+                  },
+                  "tool_call_description" : "Write document (/D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/templates/TaskTemplate.xml)"
+                } ]
+              } ],
+              "engine" : "gpt-4.1-2025-04-14",
+              "tool_calls_info" : [ {
+                "tool_message" : {
+                  "role" : "tool",
+                  "content" : "{\"entries\":[{\"name\":\"task_template.dita\"}]}",
+                  "tool_call_id" : "call_Cog03Ky6ooz8U17xS5zue8ok"
+                },
+                "tool_call_description" : "List files in folder (D:/Git-workspace/presentations/2025/tcworld-ai/positron-ai-vibe-writing/mobile-phone/templates)\nCheck the templates directory to confirm its existence and see naming conventions for template files."
+              } ]
+            } ]
+          } ],
+          "engine" : "gpt-4.1-2025-04-14"
+        } ]
+      } ]
+    }
+  },
+  "index" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+}

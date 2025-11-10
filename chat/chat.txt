@@ -1,0 +1,9 @@
+Analyze the topics and extract a common template to use for future files
+====
+save them, choose a well suited name
+====
+the result is required
+
+
+====2===
+Analyze the attached topics to see if they respect the template. Restructure them to respect the template, if needed.

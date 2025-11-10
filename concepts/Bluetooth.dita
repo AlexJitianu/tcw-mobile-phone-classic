@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="bt">
+ <title>Bluetooth&#174;</title>
+ <shortdesc>Connect to any device</shortdesc>
+ <prolog>
+  <author>alex@sync.ro</author>
+  <critdates>
+    <created date="2025-09-11"/>
+    <revised modified="2025-09-16"/>
+  </critdates>
+  <metadata>
+   <data name="oxy:question">What is Bluetooth?</data>
+  </metadata>
+  <data name="wk-review-status" value="draft"/>
+  <data name="wk-review-period" value="when-necessary"/>
+ </prolog>
+ <conbody>
+  <p>Bluetooth&#174; is a wireless technology for exchanging data over short distances without
+   physical connection</p>
+ </conbody>
+</concept>
